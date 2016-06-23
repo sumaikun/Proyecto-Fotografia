@@ -45,13 +45,20 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => storage_path('app'),
+            'root'   => storage_path('imgs'),
         ],
 
         'imagenesperfil' => [
             'driver' => 'local',
-            'root'   => public_path('app').'/imagenesperfil',
+            'root'   => public_path('imagenesperfil'),
         ],
+
+         'archivos' => [
+            'driver' => 'local',
+            'root'   => storage_path('archivos'),
+        ],
+
+
 
         'ftp' => [
             'driver'   => 'ftp',

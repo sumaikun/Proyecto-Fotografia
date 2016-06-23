@@ -8,7 +8,9 @@ use Konrad\Http\Requests;
 
 use Konrad\User;
 
-use Storage;
+use Illuminate\Support\Facades\Storage;
+
+use App;
 
 class UserController extends Controller
 {
@@ -26,7 +28,7 @@ class UserController extends Controller
     public function index()
     {
        
-       $users = User::All(); 
+       $users =  App::make('Usuarios'); 
        return view('User.list',compact('users'));
     }
 
@@ -44,13 +46,19 @@ class UserController extends Controller
          $datos_validar = 
         ["name"=>$request->name,"password"=>$request->password,"email"=>$request->email,"file"=>$nombre_original,"rol"=>$request->role];
            // return  $datos_validar;
-        $upload=Storage::disk('imagenesperfil')->put($nombre_original,  \File::get($archivo) );
+       
         /*if($upload)
          {
-            User::create($datos_validar);
+           
          }*/   
-         $users = User::All(); 
-         return view('User.List',compact('users'))->with('message','store');   
+         $upload=Storage::disk('imagenesperfil')->put($nombre_original,  \File::get($archivo) );
+         if($upload)
+          {
+             User::create($datos_validar);
+          }  
+         
+        
+         return redirect('/User')->with('message','store');   
            
     	
     }
