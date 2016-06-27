@@ -18,17 +18,28 @@ Route::get('/', function () {
     return view('User.login');
 });
 
+Route::get('500', function()
+{
+    abort(500);
+});
+
+Route::get('404', function()
+{
+    abort(404);
+});
 
 Route::get('inicio','AllowedController@index');
 
 
-Route::get('user/create', function () {
-    return view('User.Create');
-});
 
 Route::Resource('User','UserController');
 
 Route::resource('Login','LogController');
+
+Route::get('Ventas','SalesController@index');
+
+Route::post('Sales/store','SalesController@store');
+
 
 
 Route::get('auth/login',function(){
@@ -36,3 +47,5 @@ Route::get('auth/login',function(){
 });
 
 Route::get('logout','LogController@logout');
+
+Route::post('newUser','UserController@createclient');

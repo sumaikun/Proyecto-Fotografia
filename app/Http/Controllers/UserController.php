@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 use App;
 
+use Exception;
+
+
+
 class UserController extends Controller
 {
 
@@ -20,7 +24,7 @@ class UserController extends Controller
 
       public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['only'=>['create','edit','store']]);
         //$this->middleware('Admin',['only'=>['create','edit']]);      
     }
     
@@ -34,17 +38,19 @@ class UserController extends Controller
 
     public function create()
     {
-    	
-    	return view('User.Create');
+    	$interfaz = true;
+    	return view('User.Create',compact('interfaz'));
     }
 
     public function store(Request $request)
     {
 
+
     	$archivo = $request->file('file_img');
+
     	$nombre_original = $archivo->getClientOriginalName();        
          $datos_validar = 
-        ["name"=>$request->name,"password"=>$request->password,"email"=>$request->email,"file"=>$nombre_original,"rol"=>$request->role];
+         ["name"=>$request->name,"password"=>$request->password,"email"=>$request->email,"file"=>$nombre_original,"rol"=>$request->role];
            // return  $datos_validar;
        
         /*if($upload)
@@ -66,5 +72,30 @@ class UserController extends Controller
     public function show()
     {
     	
+    }
+
+    public function createclient(Request $request)
+    {
+        $archivo = $request->file('file_img');
+
+        $nombre_original = $archivo->getClientOriginalName();        
+        $datos_validar = 
+         ["name"=>$request->name,"password"=>$request->password,"email"=>$request->email,"file"=>$nombre_original,"rol"=>2];
+           // return  $datos_validar;
+       
+        /*if($upload)
+         {
+           
+         }*/   
+         $upload=Storage::disk('imagenesperfil')->put($nombre_original,  \File::get($archivo) );
+         if($upload)
+          {
+             User::create($datos_validar);
+          }  
+         
+        
+         return redirect('/')->with('message','store');  
+
+       
     }
 }

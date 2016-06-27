@@ -7,9 +7,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistema Gestion Fotografica</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -252,12 +254,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Optionally, you can add icons to the links -->
         
             <li class="treeview">
+             @if(Auth::user()->rol == 1)
               <a href="#"><i class="fa fa-link"></i> <span>Usuario</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="/User/create">Crear Usuario</a></li>
                 <li><a href="/User">Lista de Usuarios</a></li>
               </ul>
-            </li>
+             @endif 
+              </li>
+             <li> 
+              <a href="#"><i class="fa fa-link"></i> <span>Perfil</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="#">Revizar Perfil</a></li>
+                <li><a href="#">Mostrar Perfiles</a></li>
+              </ul>
+             </li>
+             <li> 
+              <a href="#"><i class="fa fa-link"></i> <span>Ventas</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="/Ventas">Resumen de Ventas</a></li>
+                <li><a href="/Sales/create">Gestionar Ventas</a></li>
+              </ul>              
+             </li> 
+           
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

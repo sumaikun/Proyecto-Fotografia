@@ -58,6 +58,11 @@ return [
             'root'   => storage_path('archivos'),
         ],
 
+          'Sales' => [
+            'driver' => 'local',
+            'root'   => public_path('Sales'),
+        ],       
+
 
 
         'ftp' => [

@@ -144,7 +144,8 @@ return [
         Konrad\Providers\AppServiceProvider::class,
         Konrad\Providers\AuthServiceProvider::class,
         Konrad\Providers\EventServiceProvider::class,
-        Konrad\Providers\RouteServiceProvider::class,
+        Konrad\Providers\RouteServiceProvider::class,        
+       'Cviebrock\ImageValidator\ImageValidatorServiceProvider'
 
     ],
 

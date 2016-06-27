@@ -4,6 +4,7 @@ namespace Konrad\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Konrad\User;
+use Konrad\Sales;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,12 @@ class AppServiceProvider extends ServiceProvider
             $query = User::All();
             return   $query;
         });
+
+           $this->app->singleton('Sales', function()
+        {
+            $query = Sales::All();
+            return   $query;
+        });   
 
     }
 }

@@ -33,7 +33,15 @@
     </div>
     @endif
 
-    
+
+    @if($message == 'store')
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Usuario Creado , verifique la cuenta por correo electronico</strong>  
+    </div>
+    @endif
+
+
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
@@ -55,14 +63,20 @@
             <div class="col-xs-4">
             
               <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+
             </div><!-- /.col -->
           </div>
        {!!Form::close()!!}
-     
+     <span style='margin-left:200px !important;'  data-target='#myModal' data-toggle='modal'><a href='#'>Crear Nueva Cuenta</a></span>
        
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
+    <!-- Button trigger modal -->
+
+@include('System.Modal')
+
+<!-- Modal -->
 
     <!-- jQuery 2.1.4 -->
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
