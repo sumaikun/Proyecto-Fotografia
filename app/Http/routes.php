@@ -15,12 +15,17 @@
     return view('welcome');
 });*/
 Route::get('/', function () {
-    return view('User.login');
+	return view('Costumers.code');
+    
 });
 
 Route::get('500', function()
 {
     abort(500);
+});
+
+Route::get('test',function(){
+	return view('Costumers.Confirm');
 });
 
 Route::get('404', function()
@@ -36,16 +41,27 @@ Route::Resource('User','UserController');
 
 Route::resource('Login','LogController');
 
+Route::resource('Sales','SalesController');
+
 Route::get('Ventas','SalesController@index');
+
+Route::get('SisFot',function()
+	{
+		return view('User.login');	
+	});
 
 Route::post('Sales/store','SalesController@store');
 
+Route::post('Costumer/download','CostumerController@download');
 
+Route::post('Costumer/getinfo','CostumerController@getinfo');
 
 Route::get('auth/login',function(){
 	return view('User.login');
 });
 
 Route::get('logout','LogController@logout');
+
+Route::get('gPaymentform','CostumerController@PaymentForm');
 
 Route::post('newUser','UserController@createclient');

@@ -9,7 +9,11 @@
         <h4 class="modal-title" id="myModalLabel">SisFot</h4>
       </div>
       <div class="modal-body">
-          @include('User.forms.formcreate')  
+        <div id="modal_content">
+          @include('User.forms.formcreate')
+        </div>
+        <div class="load">
+        </div>  
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

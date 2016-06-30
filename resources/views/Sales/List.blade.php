@@ -63,7 +63,10 @@
   }
 }
 </style>
-          <div>
+    <div class="table-responsive ocultar_400px">
+     <table class ="table">
+        <thead>
+          <tr>          
             <div class="col-md-4 listhead" >
               <!-- Widget: user widget style 1 -->
               <div class="box box-widget widget-user">
@@ -102,8 +105,12 @@
                   </div><!-- /.row -->
                 </div>
               </div><!-- /.widget-user -->
-            </div><!-- /.col -->
+            </div><!-- /.col -->        
+            </tr>
+          </thead>
+          <tbody>  
                 @foreach($sales as $sale)
+              <tr>  
                <div class="col-md-4 listhead" style="max-height:500px" >
               <!-- Box Comment -->
                 <div class="box box-widget">
@@ -130,6 +137,9 @@
                   </div><!-- /.box-footer -->
               
                 </div><!-- /.box -->
+               </tr> 
                 @endforeach
+             </tbody>
+            </table>    
             </div>    
 @stop

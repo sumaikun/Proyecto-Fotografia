@@ -40,10 +40,10 @@
                             <option value="">Selecciona</option>
                             <option value=1>Administrador</option>
                             <option value=2>Fotografo</option>
-                           
+                              
                           </select>
                           </div><!-- /.box-body -->
-                        
+                        </div>
                             
                         @endif
                       <div class="box-footer">

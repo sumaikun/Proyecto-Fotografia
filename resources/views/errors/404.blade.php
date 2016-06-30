@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-        {!!Html::style('css/bootstrap.min.css')!!}
-        {!!Html::style('css/metisMenu.min.css')!!}
-         {!!Html::style('css/sb-admin-2.css')!!}
-        {!!Html::style('css/font-awesome.min.css')!!}
-
+        {!!Html::style('bootstrap/css/bootstrap.min.css')!!}
+        {!!Html::style('bootstrap/css/metisMenu.min.css')!!}
+         {!!Html::style('bootstrap/css/sb-admin-2.css')!!}
+        
     <head>
         <title>Be right back.</title>
 
