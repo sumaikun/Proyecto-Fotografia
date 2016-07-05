@@ -86,20 +86,20 @@
                   <div class="row">
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
-                        <h5 class="description-header">3,200</h5>
-                        <span class="description-text">SALES</span>
+                        <h5 class="description-header">{{Konrad\Helpers\OwnLibrary::total_sales(Auth::user()->id)}}</h5>
+                        <span class="description-text">VENTAS</span>
                       </div><!-- /.description-block -->
                     </div><!-- /.col -->
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
                         <h5 class="description-header">13,000</h5>
-                        <span class="description-text">FOLLOWERS</span>
+                        <span class="description-text">RATING</span>
                       </div><!-- /.description-block -->
                     </div><!-- /.col -->
                     <div class="col-sm-4">
                       <div class="description-block">
-                        <h5 class="description-header">35</h5>
-                        <span class="description-text">PRODUCTS</span>
+                        <h5 class="description-header">{{Konrad\Helpers\OwnLibrary::total_photos(Auth::user()->id)}}</h5>
+                        <span class="description-text">FOTOS</span>
                       </div><!-- /.description-block -->
                     </div><!-- /.col -->
                   </div><!-- /.row -->
@@ -110,8 +110,10 @@
           </thead>
           <tbody>  
                 @foreach($sales as $sale)
-              <tr>  
-               <div class="col-md-4 listhead" style="max-height:500px" >
+
+              <tr>
+
+               <div class="col-md-4 listhead" style="max-height:500px;" >
               <!-- Box Comment -->
                 <div class="box box-widget">
                   <div class='box-header with-border'>
@@ -136,8 +138,9 @@
                 
                   </div><!-- /.box-footer -->
               
-                </div><!-- /.box -->
+                </div style="margin-bottom:100px;"><!-- /.box -->
                </tr> 
+               
                 @endforeach
              </tbody>
             </table>    

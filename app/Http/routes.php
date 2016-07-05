@@ -43,6 +43,8 @@ Route::resource('Login','LogController');
 
 Route::resource('Sales','SalesController');
 
+Route::resource('Costumer','CostumerController');
+
 Route::get('Ventas','SalesController@index');
 
 Route::get('SisFot',function()
@@ -62,6 +64,8 @@ Route::get('auth/login',function(){
 
 Route::get('logout','LogController@logout');
 
-Route::get('gPaymentform','CostumerController@PaymentForm');
+Route::get('/gPaymentform/{id}','CostumerController@PaymentForm');
 
 Route::post('newUser','UserController@createclient');
+
+//Route::post('/Costumer/purchase','CostumerController@purchase');

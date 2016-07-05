@@ -22,7 +22,7 @@ class LogController extends Controller
            }
         else 
            {
-               return redirect('/')->with('message','failed');
+               return redirect('/SisFot')->with('message','failed');
            }     
     }
 

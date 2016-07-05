@@ -1,7 +1,9 @@
 <?php
 
 namespace Konrad\Helpers;
-
+use Konrad\Purchase;
+use Konrad\Sales;
+use Konrad\User;
 class OwnLibrary
 
 {
@@ -20,4 +22,33 @@ class OwnLibrary
         }
     }
 
+    public static function total_sales($id)
+    {
+        $total = Purchase::Where('user_id','=',$id)->count();
+        return $total;
+    }
+
+        public static function total_photos($id)
+    {
+        $total = Sales::Where('usuario','=',$id)->count();
+        return $total;
+    }
+
+    public static function nombre_usuario($id)
+    {
+        $usuario = User::Where('id','=',$id)->first();
+        return $usuario->name;
+    }
+
+        public static function correo_usuario($id)
+    {
+        $usuario = User::Where('id','=',$id)->first();
+        return $usuario->email;
+    }
+
+    public static function nombre_foto($id)
+    {
+        $foto = Sales::Where('id','=',$id)->first();
+        return $foto->titulo;
+    }
 }

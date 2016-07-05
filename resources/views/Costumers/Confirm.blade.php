@@ -66,7 +66,7 @@
         <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a href="../../index2.html" class="navbar-brand"><b>Sis</b>Fot</a>
+              <a href="/" class="navbar-brand"><b>Sis</b>Fot</a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
@@ -90,13 +90,13 @@
 
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                      <b>toques</b> <a class="pull-right">1,322</a>
+                      <b>Fotos</b> <a class="pull-right">{{Konrad\Helpers\OwnLibrary::total_photos($user->id)}}</a>
                     </li>
                     <li class="list-group-item">
                       <b>rating</b> <a class="pull-right">543</a>
                     </li>
                     <li class="list-group-item">
-                      <b>ventas</b> <a class="pull-right">13,287</a>
+                      <b>ventas</b> <a class="pull-right">{{Konrad\Helpers\OwnLibrary::total_sales($user->id)}}</a>
                     </li>
                   </ul>
 
@@ -194,3 +194,7 @@
     <script src="../../dist/js/demo.js"></script>
   </body>
 </html>
+
+<script>
+var photo = {{$sale->id}}
+</script>

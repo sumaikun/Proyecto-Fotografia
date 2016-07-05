@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'ventas.javc@gmail.com', 'name' => 'Jesus Vega'],
 
     /*
     |--------------------------------------------------------------------------
@@ -67,8 +67,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username

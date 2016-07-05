@@ -36,6 +36,12 @@
         <p style="color:red;">Codigo no existe, es invalido ¡Revísalo!</p>
       </div> 
       @endif 
+      @if($message == 'notexistcard')
+        <div class="description">
+        <p style="color:red;">Los datos de la tarjeta estan equivocados revize e intente nuevamente</p>
+      </div> 
+      @endif
+                
       <div class="description">
         <a href="SisFot" class="link"><p>¡Si posees una cuenta ingresa aqui!</p></a>
       </div>
