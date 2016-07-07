@@ -61,6 +61,11 @@ return [
           'Sales' => [
             'driver' => 'local',
             'root'   => public_path('Sales'),
+        ],
+
+            'Portada' => [
+            'driver' => 'local',
+            'root'   => public_path('Portada'),
         ],       
 
 

@@ -68,4 +68,20 @@ Route::get('/gPaymentform/{id}','CostumerController@PaymentForm');
 
 Route::post('newUser','UserController@createclient');
 
+Route::get('/profile/edit/{id}','ProfileController@edit');
+
+Route::post('/profile/cover','ProfileController@cover');
+
+Route::post('/profile/info','ProfileController@info');
+
+Route::post('/profile/pic1','ProfileController@pic1');
+
+Route::post('/profile/audio','ProfileController@audio');
+
+Route::post('/profile/info2','ProfileController@info2');
+
+Route::post('/profile/pic2','ProfileController@pic2');
+
+Route::get('/profile/index','ProfileController@index');
+
 //Route::post('/Costumer/purchase','CostumerController@purchase');

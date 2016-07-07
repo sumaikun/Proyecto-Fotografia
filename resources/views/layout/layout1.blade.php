@@ -265,8 +265,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
              <li> 
               <a href="#"><i class="fa fa-link"></i> <span>Perfil</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#">Revizar Perfil</a></li>
-                <li><a href="#">Mostrar Perfiles</a></li>
+                <li><a href="/profile/index">Ver Perfil</a></li>
+                <li><a href="/profile/edit/{{Auth::user()->id}}">Editar Perfil</a></li>
               </ul>
              </li>
              <li> 

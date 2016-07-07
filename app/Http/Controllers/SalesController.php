@@ -42,32 +42,50 @@ class SalesController extends Controller
     public function store(createSaleRequest $request)
     {
 
-          $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
 
-    $randomString = '';
-    for ($i = 0; $i < 8; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength -1)];
-    }
+        $code = '';
+
+            for ($i = 0; $i < 8; $i++)
+            {
+                $code .= $characters[rand(0, $charactersLength -1)];
+            }
     
     	
     	$archivo = $request->file('archivo');
 
     	$nombre_original = $archivo->getClientOriginalName();
 
-         $usuario = Auth::user()->id;
+        $usuario = Auth::user()->id;
 
-        return $datos_validar = 
-         ["titulo"=>$request->titulo,"archivo"=>$nombre_original,"comentario"=>$request->comentario,"precio"=>$request->precio,"usuario"=>$usuario,"codigo"=>$randomString];
+        $datos_validar =["titulo"=>$request->titulo,"archivo"=>$nombre_original,"comentario"=>$request->comentario,"precio"=>$request->precio,"usuario"=>$usuario,"codigo"=>$code];
            // return  $datos_validar;
-       $upload=Storage::disk('Sales')->put($nombre_original,  \File::get($archivo) );
+        $upload=Storage::disk('Sales')->put($nombre_original,  \File::get($archivo) );
+
+
        
        if($upload)
          {
+           $this->email($request->titulo,$code);
+            
            Sales::Create($datos_validar);
          }   
 
           return redirect('/Ventas')->with('message','store');   
+    }
+
+    public function email($titulo,$code){
+      
+        $mytime = Carbon\Carbon::now();
+        $Fecha = $mytime->format('d-m-Y');
+        $array = array('nombre'=>Auth::user()->name,'titulo'=>$titulo,'code'=>$code); 
+        Mail::send('emails.code',$array,function($msj) use($correo) {
+        $msj->from('us@example.com', 'SisFot');
+        $msj->subject('Codigo Generado');
+        $msj->to(Auth::user()->email);
+        }); 
+
     }
 
 }
