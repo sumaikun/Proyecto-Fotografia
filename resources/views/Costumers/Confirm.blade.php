@@ -7,22 +7,22 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
-    <link rel="stylesheet" href="../../css/loader.css">
+    <link rel="stylesheet" href="css/loader.css">
 
-     <script src="../../js/jquery.min.js"> </script>
+     <script src="js/jquery.min.js"> </script>
 
-    <script src="../../js/getPaymentform.js"> </script>
+    <script src="js/getPaymentform.js"> </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -84,7 +84,7 @@
           <section>
                 <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img class="profile-user-img img-responsive img-circle" src="../../imagenesperfil/{{$user->file}}" alt="User profile picture">
+                  <img class="profile-user-img img-responsive img-circle" src="imagenesperfil/{{$user->file}}" alt="User profile picture">
                   <h3 class="profile-username text-center">{{$user->name}}</h3>
                   <p class="text-muted text-center">{{Konrad\Helpers\OwnLibrary::name_role($user->rol)}}</p>
 
@@ -159,7 +159,7 @@
                   </div>
                   <div class="callout callout-warning backphoto">
                     <p style="text-align:center">
-                    <img src="../../Sales/{{$sale->archivo}}" class="sale_img" alt="First slide" align="middle" >
+                    <img src="Sales/{{$sale->archivo}}" class="sale_img" alt="First slide" align="middle" >
                     </p>
                   </div>  
                   <div>
@@ -181,17 +181,17 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- SlimScroll -->
-    <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="../../plugins/fastclick/fastclick.min.js"></script>
+    <script src="plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/app.min.js"></script>
+    <script src="dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
+    <script src="dist/js/demo.js"></script>
   </body>
 </html>
 

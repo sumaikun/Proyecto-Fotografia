@@ -2,7 +2,9 @@
   <head>
     <meta charset="utf-8">
     <title>Ingresa tu Codigo</title>
-    <link rel="stylesheet" href="../../css/codeinsert.css">
+    {{Html::style('css/codeinsert.css')}}
+    
+
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <style>
       .link{

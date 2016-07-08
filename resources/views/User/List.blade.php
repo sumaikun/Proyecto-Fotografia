@@ -66,7 +66,7 @@
                     </tr>
                     @foreach($users as $User)
                     <tr>
-                      <td class=img> <img src="../../imagenesperfil/{{$User->file}}" class="img_user"></td>
+                      <td class=img> <img src="imagenesperfil/{{$User->file}}" class="img_user"></td>
                       <td> {{$User->name}}</td>
                       <td> {{$User->email}}</td>
                       <td> {{ Konrad\Helpers\OwnLibrary::name_role($User->rol)}}</td>

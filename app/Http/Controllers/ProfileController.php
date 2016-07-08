@@ -26,17 +26,16 @@ class ProfileController extends Controller
 
     public function cover(Request $request)
     {
-    	 
     	$rules = ['archivo'=>'required'];
     	$this->validate($request,$rules);
+    	$this->deletefiles('cover');
     	$archivo = $request->file('archivo'); 
     	$nombre_original = $archivo->getClientOriginalName();
     	$upload=Storage::disk('Portada')->put($nombre_original,  \File::get($archivo) );
     	if($upload)
-    	{	 
-    		$this->deletefiles('cover');	       
+    	{	    			       
         	$this->record($nombre_original,'cover');
-			return view('Profile.profile');
+			return $this->index();
 	    }
 	    else {
 	    	return "error";
@@ -50,23 +49,23 @@ class ProfileController extends Controller
         $this->validate($request,$rules);        
         $this->record($request->titulo,'info1title');
         $this->record($request->comentario,'info1');
-        return view('Profile.profile');
+        return $this->index();
     }
 
     public function pic1(Request $request)
     {
-    	$rules = ['titulo'=>'required|max:25','comentario'=>'required|max:280','archivo'=>'required'];
+	  	$rules = ['titulo'=>'required|max:25','comentario'=>'required|max:280','archivo'=>'required'];
     	$this->validate($request,$rules);
+    	$this->deletefiles('pic1');
     	$archivo = $request->file('archivo'); 
     	$nombre_original = $archivo->getClientOriginalName();
     	$upload=Storage::disk('Portada')->put($nombre_original,  \File::get($archivo) );
     	if($upload)
     	{	
-    	    $this->deletefiles('pic1');        
-	        $this->record($request->titulo,'pic1title');
+   	        $this->record($request->titulo,'pic1title');
 	        $this->record($request->comentario,'pic1comment');
 	        $this->record($nombre_original,'pic1');
-	        return view('Profile.profile');	
+	        return $this->index();	
     	}           
          else {
 	    	return "error";
@@ -77,15 +76,15 @@ class ProfileController extends Controller
     {
     	$rules = ['archivo'=>'required','titulo'=>'required|max:25'];          
     	$this->validate($request,$rules);
+    	$this->deletefiles('audio');
     	$archivo = $request->file('archivo'); 
     	$nombre_original = $archivo->getClientOriginalName();
     	$upload=Storage::disk('Portada')->put($nombre_original,  \File::get($archivo) );
     	if($upload)
-    	{
-    	    $this->deletefiles('audio');
+    	{    	    
 	    	$this->record($nombre_original,'audio');
 	    	$this->record($request->titulo,'audiotitle');
-	    	return view('Profile.profile');	
+	    	return $this->index();	
     	}	
     	  else {
 	    	return "error";
@@ -98,23 +97,23 @@ class ProfileController extends Controller
         $this->validate($request,$rules);        
         $this->record($request->titulo,'info2title');
         $this->record($request->comentario,'info2');
-        return view('Profile.profile');
+        return $this->index();
     }
 
     public function pic2(Request $request)
     {
-    	$rules = ['titulo'=>'required|max:25','comentario'=>'required|max:280','archivo'=>'required'];          
+     	$rules = ['titulo'=>'required|max:25','comentario'=>'required|max:280','archivo'=>'required'];          
         $this->validate($request,$rules);
+        $this->deletefiles('pic2');
         $archivo = $request->file('archivo'); 
     	$nombre_original = $archivo->getClientOriginalName();
     	$upload=Storage::disk('Portada')->put($nombre_original,  \File::get($archivo) );
     	if($upload)
-    	{
-    		$this->deletefiles('pic2');
+    	{    		
 	        $this->record($request->titulo,'pic2title');
 	        $this->record($request->comentario,'pic2comment');
 	        $this->record($nombre_original,'pic2');
-	        return view('Profile.profile');
+	        return $this->index();
 	    }
 	      else {
 	    	return "error";
@@ -149,9 +148,12 @@ class ProfileController extends Controller
     	}	
     }
 
+
+
     public function index() 
     {
-    	return view('Profile.profile');
+        $id = $this->usuario;
+    	return view('Profile.profile',compact('id'));
     }
 
 }

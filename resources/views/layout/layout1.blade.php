@@ -13,18 +13,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    {{Html::style('bootstrap/css/bootstrap.min.css')}}    
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    {{Html::style('dist/css/AdminLTE.min.css')}}
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="../../dist/css/skins/skin-blue.min.css">
+
+    {{Html::style('dist/css/skins/skin-blue.min.css')}}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,7 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#">
                           <div class="pull-left">
                             <!-- User Image -->
-                            <img src="../../imagenesperfil/{{Auth::user()->file}}" class="img-circle" alt="User Image">
+                            <img src="/Fotografia/public/imagenesperfil/{{Auth::user()->file}}" class="img-circle" alt="User Image">
                           </div>
                           <!-- Message title and timestamp -->
                           <h4>
@@ -171,14 +173,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Menu Toggle Button -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- The user image in the navbar-->
-                  <img src="../../imagenesperfil/{{Auth::user()->file}}" class="user-image" alt="User Image">
+                  <img src="/Fotografia/public/imagenesperfil/{{Auth::user()->file}}" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <span class="hidden-xs">{!!Auth::user()->name!!}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
-                    <img src="../../imagenesperfil/{{Auth::user()->file}}" class="img-circle" alt="User Image">
+                    <img src="/Fotografia/public/imagenesperfil/{{Auth::user()->file}}" class="img-circle" alt="User Image">
                     <p>
                       {!!Auth::user()->name!!} - {!!Konrad\Helpers\OwnLibrary::name_role(Auth::user()->rol)!!}
                       <small>Member since Nov. 2012</small>
@@ -224,7 +226,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img  src="../../imagenesperfil/{{Auth::user()->file}}" class="img-circle" alt="User Image">
+              <img  src="/Fotografia/public/imagenesperfil/{{Auth::user()->file}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p> {!!Auth::user()->name!!}</p>
@@ -257,23 +259,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
              @if(Auth::user()->rol == 1)
               <a href="#"><i class="fa fa-link"></i> <span>Usuario</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="/User/create">Crear Usuario</a></li>
-                <li><a href="/User">Lista de Usuarios</a></li>
+                <li><a href="{{route('User.create')}}">Crear Usuario</a></li>
+                <li><a href="{{route('User')}}">Lista de Usuarios</a></li>
               </ul>
              @endif 
               </li>
              <li> 
               <a href="#"><i class="fa fa-link"></i> <span>Perfil</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="/profile/index">Ver Perfil</a></li>
-                <li><a href="/profile/edit/{{Auth::user()->id}}">Editar Perfil</a></li>
+                <li><a href="{{route('profile')}}">Ver Perfil</a></li>
+                <li><a href="{{route('profile.edit',Auth::user()->id)}}">Editar Perfil</a></li>
               </ul>
              </li>
              <li> 
               <a href="#"><i class="fa fa-link"></i> <span>Ventas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="/Ventas">Resumen de Ventas</a></li>
-                <li><a href="/Sales/create">Gestionar Ventas</a></li>
+                <li><a href="{{route('ventas')}}">Resumen de Ventas</a></li>
+                <li><a href="{{route('Sales.create')}}">Gestionar Ventas</a></li>
               </ul>              
              </li> 
            
@@ -382,11 +384,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED JS SCRIPTS -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    {{Html::script('plugins/jQuery/jQuery-2.1.4.min.js')}}
     <!-- Bootstrap 3.3.5 -->
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    {{Html::script('bootstrap/js/bootstrap.min.js')}}
     <!-- AdminLTE App -->
-    <script src="../../dist/js/app.min.js"></script>
+    {{Html::script('dist/js/app.min.js')}}
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the

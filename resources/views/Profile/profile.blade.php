@@ -29,6 +29,12 @@
     width: 70em;
     height: 30em;
 }
+.img_profile {
+max-width:480px !important;
+max-height:480px !important;
+
+      }
+
 </style>
 @section('content')
 
@@ -42,8 +48,9 @@
                   <h3 class="box-title">Portada</h3>
                 </div>
                 <div class="box-body pad table-responsive">
-                  @if(Konrad\Helpers\Profileelements::portada(Auth::user()->id)!=null)
-                  <p class="crop"><img src="../../Portada/{{Konrad\Helpers\Profileelements::portada(Auth::user()->id)}}"></p>
+                  @if(Konrad\Helpers\Profileelements::portada($id)!=null)
+                  <p class="crop">{{Html::image('Portada/'.Konrad\Helpers\Profileelements::portada($id))}}
+                  </p>
                   @else
                   <p>SisFot</p>
                   @endif
@@ -56,7 +63,7 @@
               <!-- Block buttons -->
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">{{Auth::user()->name}}</h3>
+                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::name($id)}}</h3>
                 </div>
         
               </div><!-- /.box -->
@@ -64,35 +71,44 @@
               <!-- Horizontal grouping -->
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::info1title(Auth::user()->id)}}</h3>
+                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::info1title($id)}}</h3>
                 </div>
                 <div class="box-body table-responsive pad">                 
-                      {{Konrad\Helpers\Profileelements::info1(Auth::user()->id)}}                                   
+                      {{Konrad\Helpers\Profileelements::info1($id)}}                                   
                 </div>
               </div><!-- /.box -->
 
               <div class="box" style="max-height:514.5px; max-width:532px;">
                 <div class="box-header">
-                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::pic1title(Auth::user()->id)}}</h3>
+                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::pic1title($id)}}</h3>
                   
                 </div>
 
                 <div class="box-body">
-                      @if(Konrad\Helpers\Profileelements::pic1(Auth::user()->id)!=null)
-                      <p class="crop"><img src="../../Portada/{{Konrad\Helpers\Profileelements::pic1(Auth::user()->id)}}"></p>
+                      @if(Konrad\Helpers\Profileelements::pic1($id)!=null)
+                      <p>
+                      {{Html::image('Portada/'.Konrad\Helpers\Profileelements::pic1($id),'picture',['class'=>'img_profile'])}}  
+                      </p>
                       @else
                       <p>SisFot</p>
                       @endif
-                   <p>{{Konrad\Helpers\Profileelements::pic1comment(Auth::user()->id)}}</p>     
+                   <p>{{Konrad\Helpers\Profileelements::pic1comment($id)}}</p>     
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
               <!-- split buttons box -->
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Audio</h3>
+
+                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::audiotitle($id)}}</h3>
                 </div>
                 <div class="box-body">
-                      AUDIO
+                 @if(Konrad\Helpers\Profileelements::audio($id)!=null)
+                 <audio controls>
+                   <source src = "http://localhost/Fotografia/public/Portada/{{Konrad\Helpers\Profileelements::audio($id)}}" type="audio/mpeg">
+                 </audio> 
+                 @else 
+                 <p>SisFot</p>
+                 @endif
                   <div class="margin">                    
                   </div>
                   <!-- flat split buttons -->
@@ -164,56 +180,48 @@
             </div><!-- /.col -->
             <div class="col-md-6">
               <!-- Application buttons -->
-              <div class="box">
+                <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Opciones</h3>
                 </div>
-                <div class="box-body">
-               
+                <div class="box-body">               
                  
                   <a class="btn btn-app">
                     <span class="badge bg-yellow">3</span>
                     <i class="fa fa-bullhorn"></i> Notifications
-                  </a>
-                  <a class="btn btn-app">
-                    <span class="badge bg-green">300</span>
-                    <i class="fa fa-barcode"></i> Products
-                  </a>
+                  </a>    
                   <a class="btn btn-app">
                     <span class="badge bg-purple">891</span>
                     <i class="fa fa-users"></i> Users
-                  </a>
-                  <a class="btn btn-app">
-                    <span class="badge bg-teal">67</span>
-                    <i class="fa fa-inbox"></i> Orders
-                  </a>
+                  </a>            
                   <a class="btn btn-app">
                     <span class="badge bg-aqua">12</span>
                     <i class="fa fa-envelope"></i> Inbox
-                  </a>
-                  <a class="btn btn-app">
-                    <span class="badge bg-red">531</span>
-                    <i class="fa fa-heart-o"></i> Likes
-                  </a>
+                  </a>      
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
               <!-- Various colors -->
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Titulo</h3>
+                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::info2title($id)}}</h3>
                 </div>
                 <div class="box-body">
-                      INFO2   
+                      {{Konrad\Helpers\Profileelements::info2($id)}}   
                 </div>
               </div><!-- /.box -->
 
               <!-- Vertical grouping -->
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Titulo</h3>
+                  <h3 class="box-title">{{Konrad\Helpers\Profileelements::pic1title($id)}}</h3>
                 </div>
                   <div class="box-body table-responsive pad">
-                      IMAGEN 2
+                      @if(Konrad\Helpers\Profileelements::pic2($id)!=null)
+                      <p>&nbsp&nbsp&nbsp{{Html::image('Portada/'.Konrad\Helpers\Profileelements::pic2($id),'picture',['class'=>'img_profile'])}}</p>
+                      @else
+                      <p>SisFot</p>
+                      @endif
+                   <p>{{Konrad\Helpers\Profileelements::pic2comment($id)}}</p>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->

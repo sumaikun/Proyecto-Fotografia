@@ -34,3 +34,7 @@ if (file_exists($compiledPath)) {
 }
 
 ini_set('xdebug.max_nesting_level', 200);
+
+ini_set('upload_max_filesize',30);
+
+ini_set('post_max_size',30);

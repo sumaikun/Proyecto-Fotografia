@@ -1,5 +1,5 @@
 
-      <link rel="stylesheet" href="../../css/style.css">
+      <link rel="stylesheet" href="css/style.css">
 
   <style>
 
@@ -15,7 +15,7 @@
   </style>
 
 
-<script type="text/javascript" src="../../js/makePurchase.js"></script>
+<script type="text/javascript" src="js/makePurchase.js"></script>
 <div class="container" id="paymentform">
   <div id="Checkout" class="inline">
       <h1>Orden de Compra</h1>

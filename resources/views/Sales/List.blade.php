@@ -80,7 +80,7 @@
                   @endif
                 </div>
                 <div class="widget-user-image">
-                  <img class="img-circle img_user" src="../../imagenesperfil/{{Auth::user()->file}}" alt="User Avatar">
+                  <img class="img-circle img_user" src="imagenesperfil/{{Auth::user()->file}}" alt="User Avatar">
                 </div>
                 <div class="box-footer">
                   <div class="row">
@@ -118,7 +118,7 @@
                 <div class="box box-widget">
                   <div class='box-header with-border'>
                     <div class='user-block'>
-                      <img class='img-circle user_icon' src="../../imagenesperfil/{{Auth::user()->file}}" alt='user image'>
+                      <img class='img-circle user_icon' src="imagenesperfil/{{Auth::user()->file}}" alt='user image'>
                       <span class='username'><a href="#">{{Auth::user()->name}}</a></span>
                       <span class='description'> {{$sale->titulo}} - 7:30 PM Today</span>
                     </div><!-- /.user-block -->
@@ -129,7 +129,7 @@
                     </div><!-- /.box-tools -->
                   </div><!-- /.box-header -->
                   <div class='box-body'>
-                    <img class="img-responsive pad" src="../../Sales/{{$sale->archivo}}" alt="Photo">
+                    <img class="img-responsive pad" src="Sales/{{$sale->archivo}}" alt="Photo">
                     <p>{{$sale->comentario}} </p>
                     <button class='btn btn-default btn-xs'><i class='fa fa-share'></i> Share</button>
                     <button class='btn btn-default btn-xs'><i class='fa fa-thumbs-o-up'></i> Like</button>

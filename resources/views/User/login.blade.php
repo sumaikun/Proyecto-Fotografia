@@ -6,16 +6,17 @@
     <title>Sistema Laravel | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap 3.3.5 -->    
+    {{Html::style('bootstrap/css/bootstrap.min.css')}}
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../fonts/font-awesome.min.css">
+    {{Html::style('fonts/font-awesome.min.css')}}
     <!-- Ionicons -->
-    <link rel="stylesheet" href="../../fonts/ionicons.min.css">
+    {{Html::style('fonts/ionicons.min.css')}}   
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    {{Html::style('dist/css/AdminLTE.min.css')}}
     <!-- iCheck -->
-    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+    {{Html::style('plugins/iCheck/square/blue.css')}}
+    <link rel="stylesheet" href="">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -79,11 +80,11 @@
 <!-- Modal -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    {{Html::script('plugins/jQuery/jQuery-2.1.4.min.js')}}
     <!-- Bootstrap 3.3.5 -->
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    {{Html::script('bootstrap/js/bootstrap.min.js')}}
     <!-- iCheck -->
-    <script src="../../plugins/iCheck/icheck.min.js"></script>
+    {{Html::script('plugins/iCheck/icheck.min.js')}}    
     <script>
       $(function () {
         $('input').iCheck({

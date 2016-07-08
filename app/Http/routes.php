@@ -45,7 +45,7 @@ Route::resource('Sales','SalesController');
 
 Route::resource('Costumer','CostumerController');
 
-Route::get('Ventas','SalesController@index');
+Route::get('Fotos',array('as'=>'ventas', 'uses'=>'SalesController@index'));
 
 Route::get('SisFot',function()
 	{
@@ -68,20 +68,20 @@ Route::get('/gPaymentform/{id}','CostumerController@PaymentForm');
 
 Route::post('newUser','UserController@createclient');
 
-Route::get('/profile/edit/{id}','ProfileController@edit');
+Route::get('perfil/{id}',array( 'as'=>'profile.edit','uses'=>'ProfileController@edit'));
 
-Route::post('/profile/cover','ProfileController@cover');
+Route::post('perfil/cover',array( 'as'=>'profile.cover','uses'=>'ProfileController@cover'));
 
-Route::post('/profile/info','ProfileController@info');
+Route::post('perfil/info',array( 'as'=>'profile.info','uses'=>'ProfileController@info'));
 
-Route::post('/profile/pic1','ProfileController@pic1');
+Route::post('perfil/pic1',array( 'as'=>'profile.pic1','uses'=>'ProfileController@pic1'));
 
-Route::post('/profile/audio','ProfileController@audio');
+Route::post('perfil/audio',array( 'as'=>'profile.audio','uses'=>'ProfileController@audio'));
 
-Route::post('/profile/info2','ProfileController@info2');
+Route::post('perfil/info2',array( 'as'=>'profile.info2','uses'=>'ProfileController@info2'));
 
-Route::post('/profile/pic2','ProfileController@pic2');
+Route::post('perfil/pic2',array( 'as'=>'profile.pic2','uses'=>'ProfileController@pic2'));
 
-Route::get('/profile/index','ProfileController@index');
+Route::get('perfil',array('as'=>'profile', 'uses'=>'ProfileController@index'));
 
 //Route::post('/Costumer/purchase','CostumerController@purchase');
