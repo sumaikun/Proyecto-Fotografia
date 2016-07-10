@@ -45,6 +45,8 @@ Route::resource('Sales','SalesController');
 
 Route::resource('Costumer','CostumerController');
 
+Route::resource('Message','MessageController');
+
 Route::get('Fotos',array('as'=>'ventas', 'uses'=>'SalesController@index'));
 
 Route::get('SisFot',function()
@@ -62,11 +64,13 @@ Route::get('auth/login',function(){
 	return view('User.login');
 });
 
-Route::get('logout','LogController@logout');
+Route::get('logout',array('as'=>'logout','uses'=>'LogController@logout'));
 
 Route::get('/gPaymentform/{id}','CostumerController@PaymentForm');
 
 Route::post('newUser','UserController@createclient');
+
+Route::get('perfiles',array( 'as'=>'allprofiles','uses'=>'ProfileController@allprofiles'));
 
 Route::get('perfil/{id}',array( 'as'=>'profile.edit','uses'=>'ProfileController@edit'));
 
@@ -83,5 +87,12 @@ Route::post('perfil/info2',array( 'as'=>'profile.info2','uses'=>'ProfileControll
 Route::post('perfil/pic2',array( 'as'=>'profile.pic2','uses'=>'ProfileController@pic2'));
 
 Route::get('perfil',array('as'=>'profile', 'uses'=>'ProfileController@index'));
+
+Route::get('perfilusuario/{id}',array('as'=>'profile.user', 'uses'=>'ProfileController@specificprofile'));
+
+Route::get('correo/{id}',array('as'=>'mail', 'uses'=>'MessageController@index'));
+
+Route::get('leer/{id}',array('as'=>'reademail', 'uses'=>'MessageController@read'));
+
 
 //Route::post('/Costumer/purchase','CostumerController@purchase');

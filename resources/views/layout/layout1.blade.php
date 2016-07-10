@@ -204,7 +204,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="{{route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -260,7 +260,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="#"><i class="fa fa-link"></i> <span>Usuario</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="{{route('User.create')}}">Crear Usuario</a></li>
-                <li><a href="{{route('User')}}">Lista de Usuarios</a></li>
+                <li><a href="{{route('User.index')}}">Lista de Usuarios</a></li>
               </ul>
              @endif 
               </li>

@@ -37,6 +37,14 @@ max-height:480px !important;
 
 </style>
 @section('content')
+<?php $message=Session::get('message')?>
+
+    @if($message == 'sendemail')
+    <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Mensaje Enviado</strong>  
+    </div>
+    @endif
 
         <section class="content">
 
@@ -190,11 +198,11 @@ max-height:480px !important;
                     <span class="badge bg-yellow">3</span>
                     <i class="fa fa-bullhorn"></i> Notifications
                   </a>    
-                  <a class="btn btn-app">
+                  <a class="btn btn-app" href="{{route('allprofiles')}}">
                     <span class="badge bg-purple">891</span>
                     <i class="fa fa-users"></i> Users
                   </a>            
-                  <a class="btn btn-app">
+                  <a class="btn btn-app" href="{{route('mail',$id)}}">
                     <span class="badge bg-aqua">12</span>
                     <i class="fa fa-envelope"></i> Inbox
                   </a>      

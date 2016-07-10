@@ -12,6 +12,8 @@ use Storage;
 
 use Auth;
 
+use App;
+
 class ProfileController extends Controller
 {
 	public function __construct()
@@ -156,4 +158,20 @@ class ProfileController extends Controller
     	return view('Profile.profile',compact('id'));
     }
 
+    //--------------------------------------------------
+
+
+
+
+    public function allprofiles()
+    {
+        $users =  App::make('Usuarios'); 
+        return view('Profile.allprofiles',compact('users'));
+    }
+
+    public function specificprofile($id)
+    {
+        $users =  App::make('Usuarios'); 
+       return view('Profile.profile',compact('id'));
+    }    
 }
