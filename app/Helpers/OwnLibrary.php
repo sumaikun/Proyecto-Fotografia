@@ -4,6 +4,9 @@ namespace Konrad\Helpers;
 use Konrad\Purchase;
 use Konrad\Sales;
 use Konrad\User;
+use Konrad\Rating;
+use Konrad\Portada;
+use Konrad\Message;
 class OwnLibrary
 
 {
@@ -50,5 +53,40 @@ class OwnLibrary
     {
         $foto = Sales::Where('id','=',$id)->first();
         return $foto->titulo;
+    }
+
+    public static function rate_average($id){
+        $rates = Rating::Where('user_id','=',$id)->get();
+        if($rates=='[]')
+        {
+            return 0;
+        }    
+        $average = 0;
+        $total = 0;
+        foreach ($rates as $rate) {
+
+            $average += $rate->calification;
+            $total += 1;
+        }
+        return $average/$total;
+    }
+
+    public static function showpictures($id)
+    {
+        $query = Portada::where('user_id','=',$id)->first();
+        return $query;
+    }
+
+    public static function number_users()
+    {
+        $total = User::All()->count();
+        return $total;
+    }
+
+    public static function noread($id)
+    {
+        $total = Message::Where('send_id','=',$id)->where('state','=',0)->count();
+        return $total;
+        
     }
 }

@@ -20,7 +20,7 @@
 
      <?php $message=Session::get('message')?>
 
-        <form method="POST" action="/Costumer/getinfo" accept-charset="UTF-8" enctype="multipart/form-data">
+        <form method="POST" action="{{route('Costumer.info')}}" accept-charset="UTF-8" enctype="multipart/form-data">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">      
       <div class="header">

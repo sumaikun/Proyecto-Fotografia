@@ -27,7 +27,7 @@
       <div class="box-header with-border">
      </div>
      <div class="box-body">
-	         <form method="POST" action="/Sales/store" accept-charset="UTF-8" enctype="multipart/form-data">
+	         <form method="POST" action=" {{route('ventas.store')}} " accept-charset="UTF-8" enctype="multipart/form-data">
 
 	          <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">	        
 

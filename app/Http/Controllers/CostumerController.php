@@ -18,6 +18,8 @@ use Konrad\creditcard;
 
 use Konrad\Purchase;
 
+use Konrad\Rating;
+
 use Konrad\Helpers\Validation;
 
 use Carbon;
@@ -150,5 +152,24 @@ class CostumerController extends Controller
          }
 
         
+    }
+
+    public function rateform($id) {
+        $condition = Rating::Where('photo','=',$id)->first();
+        if($condition == null)
+        {$sale=Sales::Where('id','=',$id)->first();
+        return view('Costumers.Rating',compact('sale')); }
+        else {
+            echo "Ya se califico";
+        }
+    }
+
+    public function rate(Request $request)
+    {
+         Rating::create(['calification'=>$request->ratevalue,
+            'user_id'=>$request->usuario,
+            'photo'=>$request->photo,
+            ]);
+         echo "calificacion realizada";
     }
 }

@@ -54,11 +54,13 @@ Route::get('SisFot',function()
 		return view('User.login');	
 	});
 
-Route::post('Sales/store','SalesController@store');
+Route::post('crearventa',array('as'=>'ventas.store', 'uses'=>'SalesController@store'));
 
 Route::post('Costumer/download','CostumerController@download');
 
-Route::post('Costumer/getinfo','CostumerController@getinfo');
+Route::post('Costumer/rate','CostumerController@rate');
+
+Route::post('Costumer/getinfo',array( 'as'=>'Costumer.info','uses'=>'CostumerController@getinfo'));
 
 Route::get('auth/login',function(){
 	return view('User.login');
@@ -66,9 +68,11 @@ Route::get('auth/login',function(){
 
 Route::get('logout',array('as'=>'logout','uses'=>'LogController@logout'));
 
-Route::get('/gPaymentform/{id}','CostumerController@PaymentForm');
+Route::get('Costumer/gPaymentform/{id}','CostumerController@PaymentForm');
 
-Route::post('newUser','UserController@createclient');
+Route::get('Costumer/gRatingform/{id}','CostumerController@rateform');
+
+Route::post('newUser',array( 'as'=>'User.new','uses'=>'UserController@createclient'));
 
 Route::get('perfiles',array( 'as'=>'allprofiles','uses'=>'ProfileController@allprofiles'));
 

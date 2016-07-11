@@ -1,6 +1,5 @@
 
-      <link rel="stylesheet" href="css/style.css">
-
+ {{Html::style('css/style.css')}}
   <style>
 
     #paymentform{
@@ -15,7 +14,7 @@
   </style>
 
 
-<script type="text/javascript" src="js/makePurchase.js"></script>
+ {{Html::script('js/makePurchase.js')}}
 <div class="container" id="paymentform">
   <div id="Checkout" class="inline">
       <h1>Orden de Compra</h1>

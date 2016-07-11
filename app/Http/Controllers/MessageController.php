@@ -49,6 +49,9 @@ class MessageController extends Controller
     public function read($id)
     {
     	$message = Message::Where('id','=',$id)->first();
+      $message -> fill(['state'=>1,]);
+      $message ->save();
+
     	return view('Message.Read',compact('message'));
     }
 }

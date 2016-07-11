@@ -29,6 +29,7 @@
 @overwrite
 
 @section('content')
+
 <style>
   img.img-circle.img_user
   {
@@ -92,7 +93,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
-                        <h5 class="description-header">13,000</h5>
+                        <h5 class="description-header"><input id="input-21e" value="{{Konrad\Helpers\OwnLibrary::rate_average(Auth::user()->id)}}" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" disabled></h5>
                         <span class="description-text">RATING</span>
                       </div><!-- /.description-block -->
                     </div><!-- /.col -->
@@ -120,7 +121,10 @@
                     <div class='user-block'>
                       <img class='img-circle user_icon' src="imagenesperfil/{{Auth::user()->file}}" alt='user image'>
                       <span class='username'><a href="#">{{Auth::user()->name}}</a></span>
-                      <span class='description'> {{$sale->titulo}} - 7:30 PM Today</span>
+                      <span class='description'> {{$sale->titulo}} - {{$sale->created_at}}</span>
+                      @if($sale->estado==1)
+                      <p>COMPRADA</p>
+                      @endif
                     </div><!-- /.user-block -->
                     <div class='box-tools'>
                       <button class='btn btn-box-tool' data-toggle='tooltip' title='Mark as read'><i class='fa fa-circle-o'></i></button>

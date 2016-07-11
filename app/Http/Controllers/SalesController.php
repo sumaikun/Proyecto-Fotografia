@@ -16,6 +16,10 @@ use Auth;
 
 use App;
 
+use Carbon;
+
+use Mail;
+
 class SalesController extends Controller
 {
     
@@ -72,7 +76,7 @@ class SalesController extends Controller
            Sales::Create($datos_validar);
          }   
 
-          return redirect('/Ventas')->with('message','store');   
+          return redirect('Fotos')->with('message','store');   
     }
 
     public function email($titulo,$code){
@@ -80,7 +84,7 @@ class SalesController extends Controller
         $mytime = Carbon\Carbon::now();
         $Fecha = $mytime->format('d-m-Y');
         $array = array('nombre'=>Auth::user()->name,'titulo'=>$titulo,'code'=>$code); 
-        Mail::send('emails.code',$array,function($msj) use($correo) {
+        Mail::send('emails.code',$array,function($msj)  {
         $msj->from('us@example.com', 'SisFot');
         $msj->subject('Codigo Generado');
         $msj->to(Auth::user()->email);

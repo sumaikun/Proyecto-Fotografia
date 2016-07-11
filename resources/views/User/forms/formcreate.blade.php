@@ -5,7 +5,7 @@
                    @if(isset($interfaz))
                   {!!Form::open(['route'=>'User.store', 'method'=>'POST', 'files'=>true])!!}
                   @else
-                  <form method="POST" action="/newUser" accept-charset="UTF-8" enctype="multipart/form-data">
+                  <form method="POST" action="{{route('User.new')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                     @endif  
                       <div class="box-body">

@@ -199,11 +199,11 @@ max-height:480px !important;
                     <i class="fa fa-bullhorn"></i> Notifications
                   </a>    
                   <a class="btn btn-app" href="{{route('allprofiles')}}">
-                    <span class="badge bg-purple">891</span>
+                    <span class="badge bg-purple">{{Konrad\Helpers\Ownlibrary::number_users()}}</span>
                     <i class="fa fa-users"></i> Users
                   </a>            
                   <a class="btn btn-app" href="{{route('mail',$id)}}">
-                    <span class="badge bg-aqua">12</span>
+                    <span class="badge bg-aqua">{{Konrad\Helpers\Ownlibrary::noread($id)}}</span>
                     <i class="fa fa-envelope"></i> Inbox
                   </a>      
                 </div><!-- /.box-body -->

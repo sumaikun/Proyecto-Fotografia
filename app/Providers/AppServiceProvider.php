@@ -5,6 +5,7 @@ namespace Konrad\Providers;
 use Illuminate\Support\ServiceProvider;
 use Konrad\User;
 use Konrad\Sales;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
 
            $this->app->singleton('Sales', function()
         {
-            $query = Sales::All();
+            $query = Sales::Where('usuario','=',Auth::user()->id)->get();
             return   $query;
         });   
 

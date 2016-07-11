@@ -94,7 +94,7 @@ class UserController extends Controller
           }  
          
         
-         return redirect('/')->with('message','store');  
+         return redirect('SisFot')->with('message','store');  
 
        
     }

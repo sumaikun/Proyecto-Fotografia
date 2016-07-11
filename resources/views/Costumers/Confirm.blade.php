@@ -7,22 +7,33 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    {{Html::style('bootstrap/css/bootstrap.min.css')}}  
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    {{Html::style('dist/css/AdminLTE.min.css')}}
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    {{Html::style('dist/css/skins/_all-skins.min.css')}}
+    {{Html::style('css/loader.css')}}
 
-    <link rel="stylesheet" href="css/loader.css">
+    {{Html::script('js/jquery.min.js')}}
 
-     <script src="js/jquery.min.js"> </script>
+    {{Html::script('js/getPaymentform.js')}}
 
-    <script src="js/getPaymentform.js"> </script>
+    {{Html::script('js/getRatingform.js')}}
+
+    {{Html::style('css/stars.css')}}
+
+    {{Html::script('js/stars.js')}}
+
+
+
+ 
+
+ 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -84,7 +95,7 @@
           <section>
                 <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img class="profile-user-img img-responsive img-circle" src="imagenesperfil/{{$user->file}}" alt="User profile picture">
+                  <img class="profile-user-img img-responsive img-circle" src="/Fotografia/public/imagenesperfil/{{$user->file}}" alt="User profile picture">
                   <h3 class="profile-username text-center">{{$user->name}}</h3>
                   <p class="text-muted text-center">{{Konrad\Helpers\OwnLibrary::name_role($user->rol)}}</p>
 
@@ -93,14 +104,15 @@
                       <b>Fotos</b> <a class="pull-right">{{Konrad\Helpers\OwnLibrary::total_photos($user->id)}}</a>
                     </li>
                     <li class="list-group-item">
-                      <b>rating</b> <a class="pull-right">543</a>
+                      <b>rating</b> <a class="pull-right"><input id="input-21e" value="{{Konrad\Helpers\OwnLibrary::rate_average($user->id)}}" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" disabled></a>
                     </li>
+                    <br>
                     <li class="list-group-item">
                       <b>ventas</b> <a class="pull-right">{{Konrad\Helpers\OwnLibrary::total_sales($user->id)}}</a>
                     </li>
                   </ul>
 
-                  <a href="#" class="btn btn-primary btn-block"><b>Calificar</b></a>
+                  <a href="#" class="btn btn-primary btn-block" id="gRating" data-target='#myModal' data-toggle='modal'><b>Calificar</b></a>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
           </section>
@@ -118,20 +130,33 @@
                       <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
                     </ol>
                     <div class="carousel-inner">
+                    <?php $pictures = Konrad\Helpers\OwnLibrary::showpictures($user->id) ?>
                       <div class="item active">
+                      @if($pictures->cover!=null)
+                        <img src="/Fotografia/public/Portada/{{$pictures->cover}}" alt="First slide" style ="height:289px; width:520px;">
+                      @else  
                         <img src="http://placehold.it/900x500/39CCCC/ffffff&text=I+Love+Bootstrap" alt="First slide">
+                      @endif  
                         <div class="carousel-caption">
                           First Slide
                         </div>
                       </div>
                       <div class="item">
-                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap" alt="Second slide">
+                      @if($pictures->pic1!=null)
+                      <img src="/Fotografia/public/Portada/{{$pictures->pic1}}" alt="First slide" style ="height:289px; width:520px;">
+                      @else
+                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=My+SysFot" alt="Second slide">
+                      @endif  
                         <div class="carousel-caption">
                           Second Slide
                         </div>
                       </div>
                       <div class="item">
+                      @if($pictures->pic2!=null)
+                      <img src="/Fotografia/public/Portada/{{$pictures->pic2}}" alt="First slide" style ="height:289px; width:520px;">
+                      @else
                         <img src="http://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap" alt="Third slide">
+                      @endif  
                         <div class="carousel-caption">
                           Third Slide
                         </div>
@@ -159,7 +184,7 @@
                   </div>
                   <div class="callout callout-warning backphoto">
                     <p style="text-align:center">
-                    <img src="Sales/{{$sale->archivo}}" class="sale_img" alt="First slide" align="middle" >
+                    <img src="/Fotografia/public/Sales/{{$sale->archivo}}" class="sale_img" alt="First slide" align="middle" >
                     </p>
                   </div>  
                   <div>
@@ -181,17 +206,17 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    {{Html::script('plugins/jQuery/jQuery-2.1.4.min.js')}}
     <!-- Bootstrap 3.3.5 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    {{Html::script('bootstrap/js/bootstrap.min.js')}}
     <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    {{Html::script('plugins/slimScroll/jquery.slimscroll.min.js')}}
     <!-- FastClick -->
-    <script src="plugins/fastclick/fastclick.min.js"></script>
+    {{Html::script('plugins/fastclick/fastclick.min.js')}}
     <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js"></script>
+    {{Html::script('dist/js/app.min.js')}}
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    {Html::script('dist/js/demo.js')}}
   </body>
 </html>
 
