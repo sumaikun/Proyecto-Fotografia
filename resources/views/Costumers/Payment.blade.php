@@ -25,7 +25,7 @@
           <span class="discover"></span>
       </div>
 
-    <form method="post" class="formpayment" action="/Costumer" accept-charset="UTF-8" enctype="multipart/form-data" id="paymentform" autocomplete=off>
+    <form method="post" class="formpayment" action=" Costumer/pago " accept-charset="UTF-8" enctype="multipart/form-data" id="paymentform" autocomplete=off>
 
           <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 

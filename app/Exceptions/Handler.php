@@ -47,13 +47,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException) {
+
+       if ($e instanceof ModelNotFoundException) {
 
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
-          if ($e instanceof MethodNotAllowedHttpException) {
+       if ($e instanceof MethodNotAllowedHttpException) {
 
             $e = new NotFoundHttpException($e->getMessage(), $e);   
+        }
+        if ($e instanceof TokenMismatchException) {
+
+        return redirect()->guest('auth/login');
         }
 
         return parent::render($request, $e);

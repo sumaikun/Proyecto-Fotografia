@@ -29,7 +29,10 @@ class SalesController extends Controller
         //$this->middleware('Admin',['only'=>['create','edit']]);      
     }
     
-
+    public function edit($id){
+        $sale = Sales::find($id);
+        return view('Sales.Edit',compact('id','sale'));
+    }
 
     public function index()
     {
@@ -90,6 +93,19 @@ class SalesController extends Controller
         $msj->to(Auth::user()->email);
         }); 
 
+    }
+
+    public function update(createSaleRequest $request)
+    {
+        $archivo = $request->file('archivo');
+        $nombre_original = $archivo->getClientOriginalName();
+        $id = $request->id;
+        $sale = Sales::find($id);
+        $sale-> fill(['archivo'=>$nombre_original,'titulo'=>$request->titulo,'comentario'=>$request->comentario,'precio'=>$request->precio]);     
+        $upload=Storage::disk('Sales')->put($nombre_original,  \File::get($archivo) );         
+        if($upload)
+        {$sale-> save(); }            
+        return redirect('Fotos')->with('message','update');
     }
 
 }

@@ -24,10 +24,18 @@
 </div>
 @endif
 
+@if($message == 'update')
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Usuario Actualizado exitosamente</strong>  
+</div>
+@endif
+
 @endsection
 <style>
 </style>
 @section('content')
+@include('System.Modal')
 <style>
   .img_user
   {
@@ -43,6 +51,8 @@
     width:250px;
   }
 </style>
+{{Html::script('plugins/jQuery/jQuery-2.1.4.min.js')}}
+{{Html::script('js/getUseredit.js')}}
 <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
@@ -63,6 +73,7 @@
                       <th>Nombre</th>
                       <th>email</th>
                       <th>rol</th>
+                      <th></th>
                     </tr>
                     @foreach($users as $User)
                     <tr>
@@ -70,10 +81,24 @@
                       <td> {{$User->name}}</td>
                       <td> {{$User->email}}</td>
                       <td> {{ Konrad\Helpers\OwnLibrary::name_role($User->rol)}}</td>
+                      <td>
+                       <button href="#" id="{{$User->id}}" class="btn btn-warning useredit" value="{{$User->id}}" data-target='#myModal' data-toggle='modal' onclick="usuario.setid({{$User->id}})">Editar</button>
+                    </td>
                     </tr>
                     @endforeach
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div>
+
+      <script>
+        var usuario = new Object();
+        usuario.id=0;
+        usuario.setid=function(id)
+        {
+          usuario.id = id;
+          //console.log("capture el id"+factor.id);
+        }
+        
+      </script>            
 @stop

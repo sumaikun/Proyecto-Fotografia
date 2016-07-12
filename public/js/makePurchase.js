@@ -7,7 +7,7 @@
        var nombreform=$(this).attr("id");
        console.log("this is"+nombreform);
       
-       var route = "Costumer";
+       var route = "pago";
       var dato = $("#name").val();
       var dato2 = $("#card").val();
       var dato3 = $("#security").val();

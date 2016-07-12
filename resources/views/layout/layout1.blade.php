@@ -305,7 +305,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
-
+    @yield('scripts')
     <!-- jQuery 2.1.4 -->
     {{Html::script('plugins/jQuery/jQuery-2.1.4.min.js')}}
     <!-- Bootstrap 3.3.5 -->
@@ -314,6 +314,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{Html::script('dist/js/app.min.js')}}
 
      {{Html::style('css/stars.css')}}
+
     {{Html::script('js/stars.js')}}
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.

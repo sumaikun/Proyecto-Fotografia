@@ -25,11 +25,18 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Venta gestionada exitosamente</strong>  
       </div>
+    @endif
+    @if($message == 'update')
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Venta actualizada</strong>  
+      </div>
     @endif 
+
 @overwrite
 
 @section('content')
-
+@include('System.Modal')
 <style>
   img.img-circle.img_user
   {
@@ -64,6 +71,8 @@
   }
 }
 </style>
+{{Html::script('plugins/jQuery/jQuery-2.1.4.min.js')}}
+{{Html::script('js/getSaleedit.js')}}
     <div class="table-responsive ocultar_400px">
      <table class ="table">
         <thead>
@@ -136,7 +145,7 @@
                     <img class="img-responsive pad" src="Sales/{{$sale->archivo}}" alt="Photo">
                     <p>{{$sale->comentario}} </p>
                     <button class='btn btn-default btn-xs'><i class='fa fa-share'></i> Share</button>
-                    <button class='btn btn-default btn-xs'><i class='fa fa-thumbs-o-up'></i> Like</button>
+                    <button class='btn btn-default btn-xs saleedit' href="#" id="{{$sale->id}}" value="{{$sale->id}}" data-target='#myModal' data-toggle='modal' onclick="sale.setid({{$sale->id}})"><i class='fa fa-thumbs-o-up'></i> Edit</button>
                     
                   </div><!-- /.box-body -->
                 
@@ -149,4 +158,16 @@
              </tbody>
             </table>    
             </div>    
+
+      <script>
+        var sale = new Object();
+        sale.id=0;
+        sale.setid=function(id)
+        {
+          sale.id = id;
+          //console.log("capture el id"+factor.id);
+        }
+        
+      </script>    
+
 @stop

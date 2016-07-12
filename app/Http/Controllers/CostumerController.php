@@ -119,10 +119,10 @@ class CostumerController extends Controller
        
         
         $validation = Validation::purchase_validation($table,$property,$property2,$property3,$property4,$request->card,$request->security,$month,$year);
-
+        
            
 
-         if($validation='allow')
+         if($validation=='allow')
          {
 
             $nombre = Ownlibrary::nombre_usuario($request->iduser);

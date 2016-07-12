@@ -1,12 +1,10 @@
 <?php
 
-namespace Konrad\Http\Requests\Sales;
+namespace Konrad\Http\Requests;
 
 use Konrad\Http\Requests\Request;
 
-
-
-class createSaleRequest extends Request
+class UserRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +23,9 @@ class createSaleRequest extends Request
      */
     public function rules()
     {
-        $validate =  [ 'archivo'=> 'mimes:png,jpeg,jpg|image_size:700-1920,650-1500'
+       $validate =  [ 'archivo'=> 'mimes:png,jpeg,jpg'
         
         ];   
 
-        return $validate;
-        
-    }
+        return $validate;    }
 }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Konrad\Http\Requests;
 
+use Konrad\Http\Requests\UserRequest;
+
 use Konrad\User;
 
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +27,7 @@ class UserController extends Controller
       public function __construct()
     {
         $this->middleware('auth',['only'=>['create','edit','store']]);
-        //$this->middleware('Admin',['only'=>['create','edit']]);      
+        $this->middleware('Admin',['only'=>['create','index']]);      
     }
     
 
@@ -42,7 +44,7 @@ class UserController extends Controller
     	return view('User.Create',compact('interfaz'));
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
 
 
@@ -69,9 +71,26 @@ class UserController extends Controller
     	
     }
 
-    public function show()
+    public function update(UserRequest $request)
     {
-    	
+
+            $archivo = $request->file('file_img');            
+            $nombre_original = $archivo->getClientOriginalName();           
+            $id = $request->id;
+            $user = User::find($id);
+            $user-> fill($request->all());
+            $user-> fill(['file'=>$nombre_original]);     
+            $upload=Storage::disk('imagenesperfil')->put($nombre_original,  \File::get($archivo) );         
+            if($upload)
+            {$user-> save(); }            
+            return redirect('/User')->with('message','update');
+    }
+
+    public function edit($id)
+    {
+
+    	$user = User::find($id);
+        return view('User.Edit',compact('user','id'));
     }
 
     public function createclient(Request $request)

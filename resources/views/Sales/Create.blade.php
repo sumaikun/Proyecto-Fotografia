@@ -34,12 +34,12 @@
 		  			
 	          <div class="form-group">
 	            {!!Form::label('Titulo')!!}
-	            {!!Form::text('titulo',null,['id'=>'titulo','class'=>'form-control','size'=>'30x5'])!!}
+	            {!!Form::text('titulo',null,['id'=>'titulo','class'=>'form-control','size'=>'30x5','required'])!!}
 	          </div> 
 
 	          <div class="form-group">
 	            {!!Form::label('Adjunto')!!}
-	            <input name="archivo" id="archivo" type="file"   class="archivo form-control"  />
+	            <input name="archivo" id="archivo" type="file"   class="archivo form-control"  required/>
 	          </div> 
 
             <div class="form-group">
@@ -49,7 +49,7 @@
 
             <div class="form-group">
               {!!Form::label('Precio')!!}
-              {!!Form::text('precio',null,['id'=>'precio','class'=>'form-control','size'=>'30x5'])!!}
+              {!!Form::text('precio',null,['id'=>'precio','class'=>'form-control','size'=>'30x5','required'])!!}
             </div>  
 
 	           <div class="box-footer">

@@ -43,7 +43,7 @@ Route::resource('Login','LogController');
 
 Route::resource('Sales','SalesController');
 
-Route::resource('Costumer','CostumerController');
+
 
 Route::resource('Message','MessageController');
 
@@ -55,6 +55,8 @@ Route::get('SisFot',function()
 	});
 
 Route::post('crearventa',array('as'=>'ventas.store', 'uses'=>'SalesController@store'));
+
+Route::post('Costumer/pago','CostumerController@store');
 
 Route::post('Costumer/download','CostumerController@download');
 
@@ -71,6 +73,10 @@ Route::get('logout',array('as'=>'logout','uses'=>'LogController@logout'));
 Route::get('Costumer/gPaymentform/{id}','CostumerController@PaymentForm');
 
 Route::get('Costumer/gRatingform/{id}','CostumerController@rateform');
+
+Route::get('gUseredit/{id}','UserController@edit');
+
+Route::get('gSaleedit/{id}','SalesController@edit');
 
 Route::post('newUser',array( 'as'=>'User.new','uses'=>'UserController@createclient'));
 
